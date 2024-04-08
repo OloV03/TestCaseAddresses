@@ -29,7 +29,15 @@ public class ParserXML {
 
         Document document = getDocument(fileName);
         assert document != null;
-        NodeList nodes = document.getElementsByTagName("OBJECT");
+        NodeList nodes = null;
+
+        try {
+            nodes = document.getElementsByTagName("OBJECT");
+        } catch (Exception e) {
+            System.out.println("\n-----\n\tIlya balbes, kotoriy ne znaet chto za fail nujen\n-----\n");
+            return null;
+        }
+
 
         for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
@@ -76,8 +84,15 @@ public class ParserXML {
 
         Document doc = getDocument(fileName);
         assert doc != null;
+        NodeList nodes = null;
 
-        NodeList nodes = doc.getElementsByTagName("ITEM");
+        try {
+            nodes = doc.getElementsByTagName("ITEM");
+        } catch (Exception e) {
+            System.out.println("\n-----\n\tIlya balbes, kotoriy ne znaet chto za fail nujen\n-----\n");
+            return;
+        }
+        
         for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
 
